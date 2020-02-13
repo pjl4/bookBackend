@@ -13,14 +13,22 @@ router.post('/', (req, res) => {
 		req.body,
 		'\n_______________________________________________________________________________________________\nREQUEST BODY'
 	);
-	Book.create(req.body).then((book) => {
-		res.json(book);
-	});
+	Book.create(req.body)
+		.then((book) => {
+			res.json(book);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 });
 router.get('/:id', (req, res) => {
-	Book.findById(req.params.id).then((book) => {
-		res.json(book);
-	});
+	Book.findById(req.params.id)
+		.then((book) => {
+			res.json(book);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 });
 router.put('/:id', (req, res) => {
 	Book.findByIdAndUpdate(req.params.id, req.body)
@@ -32,8 +40,12 @@ router.put('/:id', (req, res) => {
 		});
 });
 router.delete('/:id', (req, res) => {
-	Book.findByIdAndDelete(req.params.id).then((book) => {
-		res.json(book);
-	});
+	Book.findByIdAndDelete(req.params.id)
+		.then((book) => {
+			res.json(book);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 });
 module.exports = router;
