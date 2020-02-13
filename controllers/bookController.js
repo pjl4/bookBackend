@@ -7,13 +7,18 @@ router.get('/', (req, res) => {
 		res.json(books);
 	});
 });
-router.get('/:id', (req, res) => {
-	Book.findById(req.params.id).then((book) => {
+router.post('/', (req, res) => {
+	Book.create(req.body).then((book) => {
+		console.log(
+			'REQUEST BODY\n_______________________________________________________________________________________________\n',
+			req.body,
+			'\n_______________________________________________________________________________________________\nREQUEST BODY'
+		);
 		res.json(book);
 	});
 });
-router.post('/', (req, res) => {
-	Book.create(req.body).then((book) => {
+router.get('/:id', (req, res) => {
+	Book.findById(req.params.id).then((book) => {
 		res.json(book);
 	});
 });
