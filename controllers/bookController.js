@@ -18,9 +18,13 @@ router.post('/', (req, res) => {
 	});
 });
 router.put('/:id', (req, res) => {
-	Book.findByIdAndUpdate(req.params.id, req.body).then((book) => {
-		res.json(book);
-	});
+	Book.findByIdAndUpdate(req.params.id, req.body)
+		.then((book) => {
+			res.json(book);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 });
 router.delete('/:id', (req, res) => {
 	Book.findByIdAndDelete(req.params.id).then((book) => {
